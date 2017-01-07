@@ -6,3 +6,5 @@ description = "Simple macros for generating ioctl numbers."
 license_file = "LICENSE.md"
 repository = "https://github.com/quadrupleslap/ioctl-gen"
 documentation = "TODO"
+keywords = ["ioctl", "number", "encode", "control", "linux"]
+
