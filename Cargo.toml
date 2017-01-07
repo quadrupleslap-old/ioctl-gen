@@ -1,0 +1,6 @@
+[package]
+name = "ioctl-gen"
+version = "0.1.0"
+authors = ["Ram Kaniyur <quadrupleslap@gmail.com>"]
+
+[dependencies]
