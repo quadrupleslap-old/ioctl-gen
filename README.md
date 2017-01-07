@@ -1,4 +1,4 @@
-#6 `ioctl-gen`
+# `ioctl-gen`
 
 [Documentation](https://docs.rs/ioctl-gen)
 
