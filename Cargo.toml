@@ -2,5 +2,7 @@
 name = "ioctl-gen"
 version = "0.1.0"
 authors = ["Ram Kaniyur <quadrupleslap@gmail.com>"]
-
-[dependencies]
+description = "Simple macros for generating ioctl numbers."
+license_file = "LICENSE.md"
+repository = "https://github.com/quadrupleslap/ioctl-gen"
+documentation = "TODO"
