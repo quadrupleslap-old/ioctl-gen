@@ -6,7 +6,7 @@ Making those magic `ioctl` numbers is really annoying without macros, so here ar
 
 ## Example
 
-```rs
+```rust
 #[macro_use]
 extern crate ioctlify;
 
