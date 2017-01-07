@@ -5,6 +5,6 @@ authors = ["Ram Kaniyur <quadrupleslap@gmail.com>"]
 description = "Simple macros for generating ioctl numbers."
 license_file = "LICENSE.md"
 repository = "https://github.com/quadrupleslap/ioctl-gen"
-documentation = "TODO"
+documentation = "https://docs.rs/ioctl-gen"
 keywords = ["ioctl", "number", "encode", "control", "linux"]
 

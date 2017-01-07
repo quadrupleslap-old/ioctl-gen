@@ -1,6 +1,6 @@
 #6 `ioctl-gen`
 
-[Documentation](TODO)
+[Documentation](https://docs.rs/ioctl-gen)
 
 Making those magic `ioctl` numbers is really annoying without macros, so here are some macros. And if you were wondering, yes, they work in constants.
 
