@@ -3,11 +3,9 @@
 //!
 //! Here are some examples:
 //!
-//! ```
-//! #[macro_use]
-//! extern crate ioctl_gen;
+//! ```edition2018
+//! use ioctl_gen::{io, iow, ioc_type, ioc_nr};
 //!
-//! # fn main() {
 //! // Taken from <linux/videodev2.h>
 //! const VIDIOC_RESERVED: u32 = io!(b'V', 1);
 //! const VIDIOC_STREAMON: u32 = iow!(b'V', 18, 4);
@@ -16,7 +14,6 @@
 //! assert_eq!(ioc_type!(VIDIOC_RESERVED), b'V' as u32);
 //! assert_eq!(VIDIOC_STREAMON, 1074026002);
 //! assert_eq!(ioc_nr!(VIDIOC_LOG_STATUS), 70);
-//! # }
 //! ```
 
 //TODO: Nonstandard platforms.
@@ -72,7 +69,7 @@ macro_rules! ioc {
 #[macro_export]
 macro_rules! io {
     ($ty:expr, $nr:expr) => {
-        ioc!($crate::NONE, $ty, $nr, 0)
+        $crate::ioc!($crate::NONE, $ty, $nr, 0)
     };
 }
 
@@ -80,7 +77,7 @@ macro_rules! io {
 #[macro_export]
 macro_rules! ior {
     ($ty:expr, $nr:expr, $sz:expr) => {
-        ioc!($crate::READ, $ty, $nr, $sz)
+        $crate::ioc!($crate::READ, $ty, $nr, $sz)
     };
 }
 
@@ -88,7 +85,7 @@ macro_rules! ior {
 #[macro_export]
 macro_rules! iow {
     ($ty:expr, $nr:expr, $sz:expr) => {
-        ioc!($crate::WRITE, $ty, $nr, $sz)
+        $crate::ioc!($crate::WRITE, $ty, $nr, $sz)
     };
 }
 
@@ -96,7 +93,7 @@ macro_rules! iow {
 #[macro_export]
 macro_rules! iowr {
     ($ty:expr, $nr:expr, $sz:expr) => {
-        ioc!($crate::READ | $crate::WRITE, $ty, $nr, $sz)
+        $crate::ioc!($crate::READ | $crate::WRITE, $ty, $nr, $sz)
     };
 }
 
