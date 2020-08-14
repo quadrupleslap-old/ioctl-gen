@@ -5,7 +5,7 @@
 //!
 //! ```
 //! #[macro_use]
-//! extern crate ioctlify;
+//! extern crate ioctl_gen;
 //!
 //! # fn main() {
 //! // Taken from <linux/videodev2.h>
