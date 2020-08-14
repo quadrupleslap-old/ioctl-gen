@@ -9,8 +9,8 @@
 //!
 //! # fn main() {
 //! // Taken from <linux/videodev2.h>
-//! const VIDIOC_RESERVED:   u32 = io!(b'V', 1);
-//! const VIDIOC_STREAMON:   u32 = iow!(b'V', 18, 4);
+//! const VIDIOC_RESERVED: u32 = io!(b'V', 1);
+//! const VIDIOC_STREAMON: u32 = iow!(b'V', 18, 4);
 //! const VIDIOC_LOG_STATUS: u32 = io!(b'V', 70);
 //!
 //! assert_eq!(ioc_type!(VIDIOC_RESERVED), b'V' as u32);
@@ -61,11 +61,11 @@ pub const DIRSHIFT: u32 = SIZESHIFT + SIZEBITS;
 #[macro_export]
 macro_rules! ioc {
     ($dr:expr, $ty:expr, $nr:expr, $sz:expr) => {
-        (($dr as u32) << $crate::DIRSHIFT)  |
-        (($ty as u32) << $crate::TYPESHIFT) |
-        (($nr as u32) << $crate::NRSHIFT)   |
-        (($sz as u32) << $crate::SIZESHIFT)
-    }
+        (($dr as u32) << $crate::DIRSHIFT)
+            | (($ty as u32) << $crate::TYPESHIFT)
+            | (($nr as u32) << $crate::NRSHIFT)
+            | (($sz as u32) << $crate::SIZESHIFT)
+    };
 }
 
 /// Creates the ioctl number for an operation that isn't reading or writing.
@@ -73,7 +73,7 @@ macro_rules! ioc {
 macro_rules! io {
     ($ty:expr, $nr:expr) => {
         ioc!($crate::NONE, $ty, $nr, 0)
-    }
+    };
 }
 
 /// Creates the ioctl number for a read-only operation.
@@ -81,7 +81,7 @@ macro_rules! io {
 macro_rules! ior {
     ($ty:expr, $nr:expr, $sz:expr) => {
         ioc!($crate::READ, $ty, $nr, $sz)
-    }
+    };
 }
 
 /// Creates the ioctl number for a write-only operation.
@@ -89,7 +89,7 @@ macro_rules! ior {
 macro_rules! iow {
     ($ty:expr, $nr:expr, $sz:expr) => {
         ioc!($crate::WRITE, $ty, $nr, $sz)
-    }
+    };
 }
 
 /// Creates the ioctl number for a read/write operation.
@@ -97,30 +97,37 @@ macro_rules! iow {
 macro_rules! iowr {
     ($ty:expr, $nr:expr, $sz:expr) => {
         ioc!($crate::READ | $crate::WRITE, $ty, $nr, $sz)
-    }
+    };
 }
 
 /// Decodes the access mode / direction from an ioctl number.
 #[macro_export]
 macro_rules! ioc_dir {
-    ($n:expr) => { ($n >> $crate::DIRSHIFT) & $crate::DIRMASK }
+    ($n:expr) => {
+        ($n >> $crate::DIRSHIFT) & $crate::DIRMASK
+    };
 }
 
 /// Decodes the type from an ioctl number.
 #[macro_export]
 macro_rules! ioc_type {
-    ($n:expr) => { ($n >> $crate::TYPESHIFT) & $crate::TYPEMASK }
+    ($n:expr) => {
+        ($n >> $crate::TYPESHIFT) & $crate::TYPEMASK
+    };
 }
 
 /// Decodes the function number from an ioctl number.
 #[macro_export]
 macro_rules! ioc_nr {
-    ($n:expr) => { ($n >> $crate::NRSHIFT) & $crate::NRMASK }
+    ($n:expr) => {
+        ($n >> $crate::NRSHIFT) & $crate::NRMASK
+    };
 }
 
 /// Decodes the parameter size from an ioctl number.
 #[macro_export]
 macro_rules! ioc_size {
-    ($n:expr) => { ($n >> $crate::SIZESHIFT) & $crate::SIZEMASK }
+    ($n:expr) => {
+        ($n >> $crate::SIZESHIFT) & $crate::SIZEMASK
+    };
 }
-
